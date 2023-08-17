@@ -18,7 +18,7 @@
         <div class="flex flex-col lg:flex-row">
             <!-- card container -->
             <div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- card triangle -->
+                <!-- card 1 -->
                 <div class="card w-96 bg-base-100 shadow-xl">
                     <figure><img src="./images/triangle.png" alt="Shoes" /></figure>
                     <div class="card-body">
@@ -30,7 +30,7 @@
                             <input id="triangle-height" class="border w-24 outline-none px-1 rounded-lg ml-4" type="text" placeholder="Height">
                             <span class="ml-2">cm</span>
                         </p>
-                        <p>Area:</p>
+                        <p>Area: <span id="triangle-area">0</span> cm<sup>2</sup></p>
                         <div class="card-actions">
                             <button onclick="btnTriangle()" class="btn btn-primary w-full">Buy Now</button>
                         </div>
@@ -41,9 +41,16 @@
                     <figure><img src="./images/rectangle.png" alt="Shoes" /></figure>
                     <div class="card-body">
                         <h2 class="card-title">Rectangle</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
+                        <p>Area (A) = w X l</p>
+                        <p>
+                            <input id="rectangle-width" class="border w-24 outline-none px-1 rounded-lg" type="text" placeholder="Width">
+                            <span class="ml-2">cm</span>
+                            <input id="rectangle-length" class="border w-24 outline-none px-1 rounded-lg ml-4" type="text" placeholder="Length">
+                            <span class="ml-2">cm</span>
+                        </p>
+                        <p>Area: <span id="rectangle-area">0</span> cm<sup>2</sup></p>
+                        <div class="card-actions">
+                            <button onclick="btnRectangle()" class="btn btn-primary w-full">Buy Now</button>
                         </div>
                     </div>
                 </div>
