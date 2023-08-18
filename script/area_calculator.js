@@ -1,36 +1,58 @@
-function btnTriangle() {
-    //base field value
-    const baseValueString = document.getElementById('triangle-base').value;
-    const baseValue = parseFloat(baseValueString);
-    
-    //height field value
-    const heightValueString = document.getElementById('triangle-height').value;
-    const heightValue = parseFloat(heightValueString);
-    document.getElementById('triangle-base').value = '';
-    document.getElementById('triangle-height').value = '';
-    if(isNaN(baseValue) || isNaN(heightValue)){
+//global function...
+function getInputValue(inputId){
+    const inputField = document.getElementById(inputId);
+    const inputValueText = inputField.value;
+    const inputValue = parseFloat(inputValueText);
+    inputField.value = '';
+    return inputValue;
+}
+function validationFunction(value1,value2){
+    if(isNaN(value1) || isNaN(value2)){
         alert('provide valid numbers');
         return;
     }
+}
+function setInnerText(elementId,area){
+    const element = document.getElementById(elementId);
+    element.innerText = area;
+}
+function btnTriangle() {
+    //base field value
+    const baseValue = getInputValue('triangle-base');
+    
+    //height field value
+    const heightValue = getInputValue('triangle-height');
+    validationFunction(baseValue,heightValue);
+    // if(isNaN(baseValue) || isNaN(heightValue)){
+    //     alert('provide valid numbers');
+    //     return;
+    // }
     //calculate the area...
     const triangleArea = 0.5 * baseValue * heightValue;
-    document.getElementById('triangle-area').innerText = triangleArea;
+    setInnerText('triangle-area',triangleArea);
 }
 function btnRectangle(){
     //width field value
-    const widthValueString = document.getElementById('rectangle-width').value;
-    const widthValue = parseFloat(widthValueString);
+    const widthValue = getInputValue('rectangle-width');
 
     //lenght field value..
-    const lenghtValueString = document.getElementById('rectangle-length').value;
-    const lenghtValue = parseFloat(lenghtValueString);
-    document.getElementById('rectangle-width').value = '';
-    document.getElementById('rectangle-length').value = '';
-    if(isNaN(widthValue) || isNaN(lenghtValue)){
-        alert('provide valid numbers');
-        return;
-    }
+    const lenghtValue = getInputValue('rectangle-length');
+    validationFunction(widthValue,lenghtValue);
     //calculate the area..
     const rectangleArea = widthValue * lenghtValue;
-    document.getElementById('rectangle-area').innerText = rectangleArea;
+    setInnerText('rectangle-area',rectangleArea);
+}
+
+function btnParallelogram(){
+    //base value...
+    const baseValue = getInputValue('parallelogram-base');
+    
+    
+    //height value...
+    const heightValue = getInputValue('parallelogram-height');
+    validationFunction(baseValue,heightValue);
+
+    // calculate area..
+    const parallelogramArea = baseValue*heightValue;
+    setInnerText('parallelogram-area',parallelogramArea);
 }
