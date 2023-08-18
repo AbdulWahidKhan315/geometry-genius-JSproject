@@ -16,6 +16,13 @@ function setInnerText(elementId,area){
     const element = document.getElementById(elementId);
     element.innerText = area;
 }
+function setInEntyContainer(areaType,area){
+    const entryContainer = document.getElementById('entry-container');
+    const p = document.createElement('p');
+    p.innerHTML = area;
+
+    entryContainer.appendChild(p);
+}
 function btnTriangle() {
     //base field value
     const baseValue = getInputValue('triangle-base');
@@ -30,6 +37,7 @@ function btnTriangle() {
     //calculate the area...
     const triangleArea = 0.5 * baseValue * heightValue;
     setInnerText('triangle-area',triangleArea);
+    setInEntyContainer('Triangle',triangleArea);
 }
 function btnRectangle(){
     //width field value
@@ -55,4 +63,38 @@ function btnParallelogram(){
     // calculate area..
     const parallelogramArea = baseValue*heightValue;
     setInnerText('parallelogram-area',parallelogramArea);
+}
+function btnRhombus(){
+    //diagonal 1 value...
+    const diagonal1Value = getInputValue('rhombus-diagonal1');
+
+    //diagonal 2 value...
+    const diagonal2Value = getInputValue('rhombus-diagonal2');
+    validationFunction(diagonal1Value,diagonal2Value);
+
+    //calculate area...
+    const RhombusArea = 0.5 * diagonal1Value * diagonal2Value;
+    setInnerText('rhobmus-area',RhombusArea);
+}
+function btnPentagon(){
+    //perimeter value....
+    const perimeter = getInputValue('perimeter');
+    //apothem value...
+    const apothem = getInputValue('apothem');
+    validationFunction(perimeter,apothem);
+
+    //calculate area...
+    const pentagonArea = 0.5 * perimeter * apothem;
+    setInnerText('pentagon-area',pentagonArea);
+}
+function btnEllipse(){
+    //major value..
+    const major = getInputValue('major');
+    //minor value..
+    const minor = getInputValue('minor');
+    validationFunction(major,minor);
+    //calculate area..
+    const ellipse = 3.1416 * major * minor;
+    ellipseArea = ellipse.toFixed(2);
+    setInnerText('ellipse-area',ellipseArea);
 }
