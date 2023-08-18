@@ -1,100 +1,126 @@
 //global function...
-function getInputValue(inputId){
+function getInputValue(inputId) {
     const inputField = document.getElementById(inputId);
     const inputValueText = inputField.value;
     const inputValue = parseFloat(inputValueText);
     inputField.value = '';
     return inputValue;
 }
-function validationFunction(value1,value2){
-    if(isNaN(value1) || isNaN(value2)){
+function validationFunction(value1, value2) {
+    if (isNaN(value1) || isNaN(value2)) {
         alert('provide valid numbers');
-        return;
+        return false;
     }
+    return true;
 }
-function setInnerText(elementId,area){
+function setInnerText(elementId, area) {
     const element = document.getElementById(elementId);
     element.innerText = area;
 }
-function setInEntyContainer(areaType,area){
+function setInEntyContainer(areaType, area) {
     const entryContainer = document.getElementById('entry-container');
     const p = document.createElement('p');
-    p.innerHTML = area;
+    p.classList.add('mt-2');
+    const count = entryContainer.childElementCount;
+    p.innerHTML = `${count + 1}. ${areaType} ${area} cm<sup>2</sup> <button class="btn btn-sm btn-success ml-2">Convert</button>`;
 
     entryContainer.appendChild(p);
 }
 function btnTriangle() {
     //base field value
     const baseValue = getInputValue('triangle-base');
-    
+
     //height field value
     const heightValue = getInputValue('triangle-height');
-    validationFunction(baseValue,heightValue);
+    const validation = validationFunction(baseValue, heightValue);
+    if (validation == true) {
+        //calculate the area...
+        const triangleArea = 0.5 * baseValue * heightValue;
+        setInnerText('triangle-area', triangleArea);
+        setInEntyContainer('Triangle', triangleArea);
+    }
     // if(isNaN(baseValue) || isNaN(heightValue)){
     //     alert('provide valid numbers');
     //     return;
     // }
-    //calculate the area...
-    const triangleArea = 0.5 * baseValue * heightValue;
-    setInnerText('triangle-area',triangleArea);
-    setInEntyContainer('Triangle',triangleArea);
+
 }
-function btnRectangle(){
+function btnRectangle() {
     //width field value
     const widthValue = getInputValue('rectangle-width');
 
     //lenght field value..
     const lenghtValue = getInputValue('rectangle-length');
-    validationFunction(widthValue,lenghtValue);
-    //calculate the area..
-    const rectangleArea = widthValue * lenghtValue;
-    setInnerText('rectangle-area',rectangleArea);
+    const validation = validationFunction(widthValue, lenghtValue);
+    if (validation == true) {
+        //calculate the area..
+        const rectangleArea = widthValue * lenghtValue;
+        setInnerText('rectangle-area', rectangleArea);
+        setInEntyContainer('Rectangle', rectangleArea);
+    }
+
 }
 
-function btnParallelogram(){
+function btnParallelogram() {
     //base value...
     const baseValue = getInputValue('parallelogram-base');
-    
-    
+
+
     //height value...
     const heightValue = getInputValue('parallelogram-height');
-    validationFunction(baseValue,heightValue);
+    const validation = validationFunction(baseValue, heightValue);
+    if (validation == true) {
+        // calculate area..
+        const parallelogramArea = baseValue * heightValue;
+        setInnerText('parallelogram-area', parallelogramArea);
+        setInEntyContainer('Parallelogram', parallelogramArea);
+    }
 
-    // calculate area..
-    const parallelogramArea = baseValue*heightValue;
-    setInnerText('parallelogram-area',parallelogramArea);
+
 }
-function btnRhombus(){
+function btnRhombus() {
     //diagonal 1 value...
     const diagonal1Value = getInputValue('rhombus-diagonal1');
 
     //diagonal 2 value...
     const diagonal2Value = getInputValue('rhombus-diagonal2');
-    validationFunction(diagonal1Value,diagonal2Value);
+    const validation = validationFunction(diagonal1Value, diagonal2Value);
+    if (validation == true) {
+        //calculate area...
+        const RhombusArea = 0.5 * diagonal1Value * diagonal2Value;
+        setInnerText('rhobmus-area', RhombusArea);
+        setInEntyContainer('Rhombus', RhombusArea);
+    }
 
-    //calculate area...
-    const RhombusArea = 0.5 * diagonal1Value * diagonal2Value;
-    setInnerText('rhobmus-area',RhombusArea);
+
 }
-function btnPentagon(){
+function btnPentagon() {
     //perimeter value....
     const perimeter = getInputValue('perimeter');
     //apothem value...
     const apothem = getInputValue('apothem');
-    validationFunction(perimeter,apothem);
+    const validation = validationFunction(perimeter, apothem);
+    if (validation == true) {
+        //calculate area...
+        const pentagonArea = 0.5 * perimeter * apothem;
+        setInnerText('pentagon-area', pentagonArea);
+        setInEntyContainer('Pentagon', pentagonArea);
+    }
 
-    //calculate area...
-    const pentagonArea = 0.5 * perimeter * apothem;
-    setInnerText('pentagon-area',pentagonArea);
+
 }
-function btnEllipse(){
+function btnEllipse() {
     //major value..
     const major = getInputValue('major');
     //minor value..
     const minor = getInputValue('minor');
-    validationFunction(major,minor);
-    //calculate area..
-    const ellipse = 3.1416 * major * minor;
-    ellipseArea = ellipse.toFixed(2);
-    setInnerText('ellipse-area',ellipseArea);
+    const validation = validationFunction(major, minor);
+    if (validation == true) {
+        //calculate area..
+        const ellipse = 3.1416 * major * minor;
+        ellipseArea = ellipse.toFixed(2);
+        setInnerText('ellipse-area', ellipseArea);
+        setInEntyContainer('Ellipse', ellipseArea);
+    }
+
 }
